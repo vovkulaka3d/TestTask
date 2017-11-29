@@ -17,6 +17,11 @@ public class Item {
     String itemDescription;
     String itemComposit;
     int itemAmount;
+    
+    int itemSoldQuantity;
+    int itemBuyQuantity;
+    float totalPrice;
+    
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
