@@ -1,18 +1,17 @@
 package qatest_1;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Trading {
+   
+    private static final String[] DAY_OF_WEEK = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Субота", "Воскресенье"};
     
     // Ініціалізуєм список товарів  список товарів 
     private final ArrayList<Item> itemsList = ItemList.getAllItems();
     public ArrayList<Item> getItemsList() {
         return itemsList;
     }
-    
     
     
     // Умови визначення ціни
@@ -56,8 +55,9 @@ public class Trading {
     
     // Товарооборот за день 
     public void oneDay (int day){
-        Item item = null;
+        Item item = new Item();
         for(int i=8; i<21; i++){
+            System.out.println("С " + i + ":00" + " до " + (i+1) + ":00");
             Random random = new Random();
             int customers = random.nextInt(10);
             for(int j=0; j<=customers; j++){                          //1->10
@@ -73,7 +73,7 @@ public class Trading {
                     itemsList.add(itemId, item);
                     itemsList.remove(itemId+1);
                 } else {
-                    System.out.println("Не достаточное количество товаро " + itemsList.get(itemId).itemName + " в магазине");
+                    //System.out.println("Не достаточное количество товара " + itemsList.get(itemId).itemName + " в магазине");
                 }
             }
         }
@@ -98,6 +98,7 @@ public class Trading {
     
     public void oneMonse (){
         for(int i=0;i <30; i++){
+            System.out.println(DAY_OF_WEEK[i%7]);
             oneDay(i%7);
         }
         ItemList.setAllItems(itemsList);

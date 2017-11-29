@@ -15,7 +15,6 @@ public class ItemList {
     public static ArrayList<Item> getAllItems (){
        ArrayList <Item> items= new ArrayList <>();
           
-       
        try (CSVReader reader = new CSVReader(new FileReader(csv), ',' , '"' , 0)){
             String[] nextLine;
             while((nextLine = reader.readNext()) != null){
@@ -58,8 +57,8 @@ public class ItemList {
                 totalBasePrice += itemsList.get(i).itemSoldQuantity*itemsList.get(i).itemPrice;
                 itemPurchasePrice += itemsList.get(i).itemBuyQuantity*itemsList.get(i).itemPrice;
             }
-            writer.write(System.getProperty("line.separator") + "Прибыль магазина от продаж составила " + (totalSellPrice-totalBasePrice) + System.getProperty("line.separator"));
-            writer.write("Затраченные средства на дозакупку товара составила " + itemPurchasePrice);
+            writer.write(System.getProperty("line.separator") + "Прибыль магазина от продаж " + (totalSellPrice-totalBasePrice) + System.getProperty("line.separator"));
+            writer.write("Затраченные средства на дозакупку товара " + itemPurchasePrice);
             } 
             catch (IOException ex) {
                 System.err.println(ex.getMessage());
